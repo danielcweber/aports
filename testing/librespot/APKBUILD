@@ -9,7 +9,7 @@ url="https://github.com/librespot-org/librespot"
 arch="all !s390x !riscv64 !loongarch64" # limited by cargo
 license="MIT"
 options="!check" # no test suite
-makedepends="cargo alsa-lib-dev cargo-auditable"
+makedepends="cargo alsa-lib-dev pulseaudio-dev cargo-auditable"
 install="$pkgname.pre-install"
 subpackages="$pkgname-openrc"
 source="librespot-$pkgver.tar.gz::https://github.com/librespot-org/librespot/archive/v$pkgver.tar.gz
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cargo auditable build --release --frozen \
-		--features alsa-backend
+		--features pulseaudio-backend
 }
 
 package() {
