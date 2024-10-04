@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cargo auditable build --release --frozen \
-		--features pulseaudio-backend
+		--no-default-features --features pulseaudio-backend
 }
 
 package() {
